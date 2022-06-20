@@ -5,7 +5,7 @@ class UnfinishedFilter
     Proto
     Beta
     Kiosk
-    Possible Proto
+    Possible\ Proto
     Sample
   ]
 
