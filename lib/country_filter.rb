@@ -15,14 +15,14 @@ class CountryFilter
   private
 
   def usa_games
-    games.select { |game| game.match? /\(.*USA\)/ }
+    @usa_games ||= games.select { |game| game.match? /\(.*USA\)/ }
   end
 
   def eu_games
-    games.select { |game| game.match? /\(.*Europe\)/ }
+    @eu_games ||= games.select { |game| game.match? /\(.*Europe\)/ }
   end
 
   def japan_games
-    games.select { |game| game.match? /\(.*Japan\)/ }
+    @japan_games ||= games.select { |game| game.match? /\(.*Japan\)/ }
   end
 end
