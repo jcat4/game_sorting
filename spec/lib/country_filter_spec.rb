@@ -3,8 +3,8 @@ require './lib/country_filter'
 describe CountryFilter do
   let(:filter) { CountryFilter.new(list) }
 
-  describe "#filter countries" do
-    subject(:filtered) { filter.filter_countries }
+  describe "#prioritized_countries" do
+    subject(:filtered) { filter.prioritized_countries }
 
     context "multiple country releases" do
       let(:list) {[

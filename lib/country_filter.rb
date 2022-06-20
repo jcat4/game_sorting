@@ -5,7 +5,8 @@ class CountryFilter
     @games = games
   end
 
-  def filter_countries
+  # USA > Europe > Japan > others
+  def prioritized_countries
     return usa_games if usa_games.any?
     return eu_games if eu_games.any?
     return japan_games if japan_games.any?
