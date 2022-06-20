@@ -1,4 +1,8 @@
 class CountryFilter
+  USA_REGEX =   /\(.*USA\)/
+  EU_REGEX =    /\(.*Europe\)/
+  JAPAN_REGEX = /\(.*Japan\)/
+
   attr_reader :games
 
   def initialize(games)
@@ -16,14 +20,18 @@ class CountryFilter
   private
 
   def usa_games
-    @usa_games ||= games.select { |game| game.match? /\(.*USA\)/ }
+    @usa_games ||= select_by_country(USA_REGEX)
   end
 
   def eu_games
-    @eu_games ||= games.select { |game| game.match? /\(.*Europe\)/ }
+    @eu_games ||= select_by_country(EU_REGEX)
   end
 
   def japan_games
-    @japan_games ||= games.select { |game| game.match? /\(.*Japan\)/ }
+    @japan_games ||= select_by_country(JAPAN_REGEX)
+  end
+
+  def select_by_country(regex)
+    games.select { |game| game.match?(regex) }
   end
 end
