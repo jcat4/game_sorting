@@ -39,16 +39,16 @@ describe CountryFilter do
       end
     end
 
-    # context "only european releases (weird case)" do
-    #   let(:list) {[
-    #     "Asterix & Obelix (Europe) (Fr,De) (Beta) (SGB Enhanced)",
-    #     "Asterix & Obelix (Europe) (Fr,De) (SGB Enhanced)",
-    #     "Asterix & Obelix (Spain) (En,Es) (SGB Enhanced)"
-    #   ]}
+    context "when USA and Euro English Release" do
+      let(:list) {[
+        'Cannon Fodder (Europe) (En,Fr,De,Es,It) (Beta)',
+        'Cannon Fodder (Europe) (En,Fr,De,Es,It)',
+        'Cannon Fodder (USA) (En,Fr,De,Es,It)',
+      ]}
 
-    #   it "should only return English European titles" do
-
-    #   end
-    # end
+      it "should prioritize USA release" do
+        expect(filtered).to contain_exactly('Cannon Fodder (USA) (En,Fr,De,Es,It)')
+      end
+    end
   end
 end

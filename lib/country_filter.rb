@@ -1,7 +1,9 @@
+require './lib/europe_filter'
+
 class CountryFilter
   USA_REGEX =   /\(.*USA\)/
-  EU_REGEX =    /\(.*Europe\)/
   JAPAN_REGEX = /\(.*Japan\)/
+  # TODO: where does Australia fit into all this?
 
   attr_reader :games
 
@@ -12,7 +14,7 @@ class CountryFilter
   # USA > Europe > Japan > others
   def prioritized_countries
     return usa_games if usa_games.any?
-    return eu_games if eu_games.any?
+    return english_eu_games if english_eu_games.any?
     return japan_games if japan_games.any?
     games
   end
@@ -23,8 +25,9 @@ class CountryFilter
     @usa_games ||= select_by_country(USA_REGEX)
   end
 
-  def eu_games
-    @eu_games ||= select_by_country(EU_REGEX)
+  def english_eu_games
+    @english_eu_games ||=
+      EuropeFilter.new(games).english_eu_releases
   end
 
   def japan_games
