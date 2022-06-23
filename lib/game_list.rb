@@ -10,9 +10,9 @@ class GameList
   end
 
   def games_to_keep
-    filtered = filter_countries(games)
-    filtered = filter_revisions(filtered)
-    filter_unfinished(filtered)
+    filtered = filter_unfinished(games)
+    filtered = filter_countries(filtered)
+    filter_revisions(filtered)
   end
 
   private
