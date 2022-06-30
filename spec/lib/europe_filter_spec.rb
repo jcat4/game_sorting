@@ -6,7 +6,7 @@ describe EuropeFilter do
   describe '#eu_games' do
     subject(:eu_games) { filter.eu_games(list) }
 
-    context 'multiple country releases' do
+    context 'when multiple country releases' do
       let(:list) do
         [
           'Bionic Commando (Europe)',
@@ -15,12 +15,12 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should only return Europe' do
+      it 'onlies return Europe' do
         expect(eu_games).to contain_exactly('Bionic Commando (Europe)')
       end
     end
 
-    context 'multiple EU releases' do
+    context 'when multiple EU releases' do
       let(:list) do
         [
           'Bionic Commando (USA)',
@@ -35,7 +35,7 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should only return Europe' do
+      it 'onlies return Europe' do
         expect(eu_games).to contain_exactly(
           'Bionic Commando (Europe)',
           'Bionic Commando (Spain)',
@@ -61,7 +61,7 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should only return the english release' do
+      it 'onlies return the english release' do
         expect(en_games).to contain_exactly('Asterix & Obelix (Spain) (En,Es) (SGB Enhanced)')
       end
     end
@@ -78,12 +78,12 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should prioritize Europe release' do
+      it 'prioritizes Europe release' do
         expect(en_eu_releases).to contain_exactly('SomeGame (Europe) (En,Es)')
       end
     end
 
-    context 'no Europe releases with explicit English tag' do
+    context 'when no Europe releases with explicit English tag' do
       let(:list) do
         [
           'SomeGame (Europe)',
@@ -92,7 +92,7 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should prioritize Europe release' do
+      it 'prioritizes Europe release' do
         expect(en_eu_releases).to contain_exactly('SomeGame (Europe)')
       end
     end
@@ -106,7 +106,7 @@ describe EuropeFilter do
         ]
       end
 
-      it 'should prioritize Europe release (hopefully English)' do
+      it 'prioritizes Europe release (hopefully English)' do
         expect(en_eu_releases).to contain_exactly('SomeGame (Europe)')
       end
     end
