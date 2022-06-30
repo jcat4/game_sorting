@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 # European releases have a lot of edge cases,
 # so simple regex won't cut it.
 # TODO: Awful code, refactor lol
 class EuropeFilter
-  EU_TAG = ['Europe']
-  EU_TAGS = [EU_TAG, 'Spain', 'Germany', 'Italy', 'Netherlands', 'United Kingdom', 'France']
+  EU_TAG = ['Europe'].freeze
+  EU_TAGS = [EU_TAG, 'Spain', 'Germany', 'Italy', 'Netherlands', 'United Kingdom', 'France'].freeze
 
   EN_TAG = 'En'
-  LANG_TAGS = ['Fr' ,'De' ,'Es' ,'It' ,'Nl' ,'Pt' ,'Sv' ,'No' ,'Da' ,'Fi', EN_TAG]
-
+  LANG_TAGS = ['Fr', 'De', 'Es', 'It', 'Nl', 'Pt', 'Sv', 'No', 'Da', 'Fi', EN_TAG].freeze
 
   attr_reader :games
 
@@ -24,10 +25,10 @@ class EuropeFilter
     eu_releases = eu_games(games)
     en_eu_releases = english_games(eu_releases)
 
-    en_eu_releases = eu_releases if  en_eu_releases.empty?
+    en_eu_releases = eu_releases if en_eu_releases.empty?
 
     if en_eu_releases.size > 1
-      en_eu_releases.select { |game| game.match?(tag_regex([EU_TAG]))}
+      en_eu_releases.select { |game| game.match?(tag_regex([EU_TAG])) }
     else
       en_eu_releases
     end
