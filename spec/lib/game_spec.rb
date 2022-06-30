@@ -1,13 +1,13 @@
-require './lib/game_list'
+require './lib/game'
 
-describe GameList do
-  let(:list) { GameList.new(games) }
+describe Game do
+  let(:list) { Game.new(versions) }
 
   describe '#games_to_keep' do
-    subject(:keepers) { list.games_to_keep }
+    subject(:keepers) { list.versions_to_keep }
 
     context 'when some unreleased, mutiple revisions' do
-      let(:games) do
+      let(:versions) do
         [
           'Donkey Kong Land III (USA, Europe) (Beta)',
           'Donkey Kong Land III (USA, Europe) (Rev 1) (SGB Enhanced)',
@@ -21,7 +21,7 @@ describe GameList do
     end
 
     context 'when multiple regions, and some unreleased' do
-      let(:games) do
+      let(:versions) do
         [
           'Go! Go! Tank (Japan) (Beta)',
           'Go! Go! Tank (Japan)',
@@ -36,7 +36,7 @@ describe GameList do
     end
 
     context 'when only beta released in USA, but officially released in EU' do
-      let(:games) do
+      let(:versions) do
         [
           'Cannon Fodder (Europe) (En,Fr,De,Es,It)',
           'Cannon Fodder (USA) (En,Fr,De,Es,It) (Beta)'

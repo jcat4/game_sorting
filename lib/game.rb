@@ -2,15 +2,15 @@ require './lib/country_filter'
 require './lib/revision_filter'
 require './lib/unfinished_filter'
 
-class GameList
-  attr_accessor :games
+class Game
+  attr_accessor :versions
 
-  def initialize(games = [])
-    @games = games
+  def initialize(versions = [])
+    @versions = versions
   end
 
-  def games_to_keep
-    filtered = filter_unfinished(games)
+  def versions_to_keep
+    filtered = filter_unfinished(versions)
     filtered = filter_countries(filtered)
     filter_revisions(filtered)
   end
