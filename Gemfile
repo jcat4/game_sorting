@@ -8,3 +8,5 @@ gem "guard-rspec"
 gem "pry"
 gem "flog"
 gem "solargraph"
+gem 'rubocop-rspec', require: false
+gem 'reek'
